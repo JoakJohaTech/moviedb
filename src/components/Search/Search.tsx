@@ -40,7 +40,7 @@ const Search = () => {
   }
 
   return(
-    <div className="flex w-full h-10 cursor-pointer">
+    <div className="flex max-xs:w-full w-[385px] h-10">
       <label className="relative block w-full z-30">
         <span className="absolute inset-y-0 left-0 flex items-center pl-2">
           <svg className="h-5 w-5 fill-slate-300" viewBox="0 0 20 20"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
@@ -55,15 +55,18 @@ const Search = () => {
       </label>
 
       {focus &&
-        <div className="flex w-full h-screen fixed bg-black opacity-100 z-20 top-32 overflow-y-auto">
-          {searchResponse?.map((item: any, index: number) => {
-            return(
-              <div className="grid grid-cols-2 gap-2 w-full h-full" key={index}>
-                <Block content={item} variant='small' />
-                {item.title}
-              </div>
-            );
-          })}
+        <div className="absolute w-screen h-4/5 bg-black opacity-100 z-20 max-xs:top-32 top-20">
+          <div className="max-xs:flex max-xs:flex-col">
+            <h3 className="font-bold text-xl pb-4">Search</h3>
+            {searchResponse?.map((item: any, index: number) => {
+              return(
+                <div className="grid grid-cols-3 max-xs:gap-6 gap-10 w-1/2 max-xs:grid-cols-2 max-xs:w-full max-xs:h-full" key={index}>
+                  <Block content={item} variant='small' />
+                </div>
+              );
+            })}
+          </div>
+
         </div>
       }
     </div>

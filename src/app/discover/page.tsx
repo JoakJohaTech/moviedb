@@ -7,8 +7,8 @@ export default async function Discover() {
 
   return(
     <main className="w-full h-screen px-6">
-      <div className="">
-        <h3>Movies</h3>
+      <div className="sm:fixed sm:top-3 sm:left-24">
+        <h3 className="font-bold text-xl">Movies</h3>
       </div>
       <div className="pt-6">
         <div>
