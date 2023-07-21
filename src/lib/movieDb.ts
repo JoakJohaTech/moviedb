@@ -1,5 +1,5 @@
 const readToken = process.env.MOVIE_DB_API_TOKEN;
-const test = process.env.NEXT_PUBLIC_MOVIE_DB_API_TOKEN;
+const pubReadToken = process.env.NEXT_PUBLIC_MOVIE_DB_API_TOKEN;
 
 export interface MovieList {
   adult: boolean,
@@ -44,7 +44,7 @@ export async function getConfig() {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${test}`
+      Authorization: `Bearer ${pubReadToken}`
     }
   };
   const response: MovieDbConfig = await fetch(url, options)
@@ -108,7 +108,7 @@ export async function search(searchWord: string, pageNumber: number = 1) {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${test}`
+      Authorization: `Bearer ${pubReadToken}`
     }
   };
   const response = await fetch(url, options)
@@ -140,7 +140,7 @@ export async function getDiscover(genre: number) {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${test}`
+      Authorization: `Bearer ${pubReadToken}`
     }
   };
   const response = await fetch(url, options)
