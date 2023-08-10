@@ -18,7 +18,7 @@ const Nav = () => {
   };
 
   return(
-    <div className="pt-4 sm:border-r-2 sm:w-full">
+    <div className="pt-4 sm:w-full md:w-[278px] border-r-2">
       <div className="absolute max-xs:visible invisible right-0 z-40">
         <button className="cursor-pointer" onClick={toggleMobileMenu}>
           {mobileMenu &&
@@ -51,9 +51,9 @@ const Nav = () => {
       }
       {width >= 900 && 
         <nav
-          className="relative w-72 h-full bg-black flex items-center"
+          className="fixed w-full h-full flex items-center"
         >
-          <ul className="flex flex-col relative list-none px-10">
+          <ul className="flex flex-col list-none px-10">
             <li className="relative mb-4">
               <Link href="/" className="flex h-12 cursor-pointer items-center text-white">
                 <HomeIcon />
