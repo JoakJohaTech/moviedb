@@ -111,7 +111,7 @@ export async function search(searchWord: string, pageNumber: number = 1) {
       Authorization: `Bearer ${pubReadToken}`
     }
   };
-  const response = await fetch(url, options)
+  const response: SearchList = await fetch(url, options)
     .then(res => res.json())
     .catch(err => console.error('error:' + err));
   
@@ -143,7 +143,7 @@ export async function getDiscover(genre: number) {
       Authorization: `Bearer ${pubReadToken}`
     }
   };
-  const response = await fetch(url, options)
+  const response: MovieList = await fetch(url, options)
     .then(res => res.json())
     .catch(err => console.error('error:' + err));
   

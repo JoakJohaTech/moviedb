@@ -61,6 +61,9 @@ export default async function Home() {
           </div>
         </div>
       </div>
+      <div className="flex justify-center items-center">
+        <p>This product uses the TMDb API but is not endorsed or certified by TMDb</p>
+      </div>
     </main>
   );
 }
