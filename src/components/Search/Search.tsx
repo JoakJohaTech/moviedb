@@ -7,7 +7,7 @@ const Search = () => {
 
   const [searchString, setSearchString] = useState<string>('');
   const [focus, setFocus] = useState(false);
-  const [searchResponse, setSearchResponse] = useState<MovieList[]>([]);
+  const [searchResponse, setSearchResponse] = useState<SearchList[]>([]);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     if(e) {
@@ -27,8 +27,8 @@ const Search = () => {
       if(!searchString) {
         return [];
       }
-      const searchResult: MovieList = await search(searchString);
-      const searchArray = [searchResult];
+      const searchResult = await search(searchString);
+      let searchArray = [searchResult];
       setSearchResponse(searchArray);
       return searchArray;
     };
