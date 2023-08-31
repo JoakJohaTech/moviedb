@@ -63,7 +63,8 @@ function getOptions(): Options {
   };
 }
 
-async function fetchWrapper<T>(url: string, options: Options): Promise<T> {
+async function fetchWrapper<T>(url: string): Promise<T> {
+  const options = getOptions();
   try {
     const response = await fetch(url, options);
     const data = response.json();
@@ -74,81 +75,29 @@ async function fetchWrapper<T>(url: string, options: Options): Promise<T> {
 };
 
 export async function getContent(url: string): Promise<MovieList | undefined> {
-  const options = getOptions();
-  const data = await fetchWrapper<MovieList>(url, options);
+  const data = await fetchWrapper<MovieList>(url);
   return data;
 }
 
 export async function getConfig(): Promise<MovieDbConfig | undefined> {
-  const options = getOptions();
-  const data = await fetchWrapper<MovieDbConfig>(CONFIG_URL, options);
+  const data = await fetchWrapper<MovieDbConfig>(CONFIG_URL);
   return data;
 };
 
-// export async function loadRated() {
-//   const url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
-//   const options = {
-//     method: 'GET',
-//     headers: {
-//       accept: 'application/json',
-//       Authorization: `Bearer ${readToken}`
-//     }
-//   };
-//   const response: MovieList = await fetch(url, options)
-//     .then(res => res.json())
-//     .catch(err => console.error('error:' + err));
-  
-//   return response;
-// };
-
-// export async function loadTrending() {
-//   const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
-//   const options = {
-//     method: 'GET',
-//     headers: {
-//       accept: 'application/json',
-//       Authorization: `Bearer ${readToken}`
-//     }
-//   };
-//   const response: MovieList = await fetch(url, options)
-//     .then(res => res.json())
-//     .catch(err => console.error('error:' + err));
-  
-//   return response;
-// };
-
-// export async function loadPlaying() {
-//   const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
-//   const options = {
-//     method: 'GET',
-//     headers: {
-//       accept: 'application/json',
-//       Authorization: `Bearer ${readToken}`
-//     }
-//   };
-//   const response: MovieList = await fetch(url, options)
-//     .then(res => res.json())
-//     .catch(err => console.error('error:' + err));
-  
-//   return response;
-// };
 
 export async function search(searchWord: string, pageNumber: number = 1): Promise<SearchList> {
   const url = `${SEARCH_URL}/movie?query=${searchWord}&page=${pageNumber}`;
-  const options = getOptions();
-  const data = await fetchWrapper<SearchList>(url, options);
+  const data = await fetchWrapper<SearchList>(url);
   return data;
 };
 
 export async function genres(): Promise<GenresList> {
-  const options = getOptions();
-  const data = await fetchWrapper<GenresList>(GENRES_URL, options);
+  const data = await fetchWrapper<GenresList>(GENRES_URL);
   return data;
 }
 
 export async function getDiscover(genre: number): Promise<MovieList> {
   const url = `${DISCOVER_URL}?with_genres=${genre}`;
-  const options = getOptions();
-  const data = await fetchWrapper<MovieList>(url, options);
+  const data = await fetchWrapper<MovieList>(url);
   return data;
 }
