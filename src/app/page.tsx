@@ -1,18 +1,20 @@
-import { loadPlaying, loadRated, loadTrending, MovieList } from '@/lib/movieDb';
+import { getContent } from '@/lib/movieDb';
 import Block from '@/components/Block/Block';
 import Search from '@/components/Search/Search';
+import { PLAYING_URL, RATED_URL, TRENDING_URL } from '@/constans';
 
 export default async function Home() {
-  const topRated: MovieList = await loadRated();
-  const trending: MovieList = await loadTrending();
-  const playing: MovieList = await loadPlaying();
+
+  const topRated = await getContent(RATED_URL);
+  const trending = await getContent(TRENDING_URL);
+  const playing = await getContent(PLAYING_URL);
 
   const topRatedArray = [topRated];        
   const trendingArray = [trending];
   const playingArray = [playing];
 
   return (
-    <main className="w-full px-6 max-xs:px-4 relative max-xs:pt-8">
+    <main className="w-4/5 px-6 max-xs:px-4 relative max-xs:pt-8">
       <div className="sm:fixed sm:top-4 sm:left-24 max-xs:pb-2">
         <h3 className="font-bold text-xl w-24">Movies</h3>
       </div>
@@ -61,7 +63,7 @@ export default async function Home() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center text-gray-500 opacity-70">
         <p>This product uses the TMDb API but is not endorsed or certified by TMDb</p>
       </div>
     </main>

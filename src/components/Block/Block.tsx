@@ -1,3 +1,5 @@
+"use client";
+
 import { MovieDbConfig, MovieList, getConfig } from "@/lib/movieDb";
 import Card from "./Card/Card";
 import { useEffect, useState } from "react";
@@ -7,13 +9,28 @@ interface Props {
   variant: 'big' | 'small';
 };
 
+interface Content {
+  results: [MovieList];
+}
+
 const Block = (props: Props) => {
 
   const { content, variant = null } = props;
+  const [currentContent, setCurrentContent] = useState<Content | null>(null);
+
+  useEffect(() => {
+    setCurrentContent(content);
+  }, [content]);
+
+  if (!currentContent) {
+    return <></>;
+  }
+
+  console.log(currentContent);
 
   return(
     <>
-      {content.results.map((item: MovieList, index: number) => {
+      {currentContent.results.map((item: MovieList, index: number) => {
         if(variant === 'big' && index >= 2) {
           return;
         }

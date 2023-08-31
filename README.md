@@ -1,6 +1,6 @@
-# CompileIt Case
+# TMDB FE
 
-This is a webpage made for compileIt's work case.
+This is frontend for TMDB APIs.
 
 ## Getting Started
 
@@ -18,11 +18,11 @@ For this project to work correctly you will need to get both an API key and a re
 Put these two keys an a file called `.env.local` in the root of the project.
 
 ```bash
-MOVIE_DB_API_KEY={YOUR_API_KEY_HERE}
-NEXT_PUBLIC_MOVIE_DB_API_TOKEN={YOUR_TOKEN_HER}
+MOVIE_DB_API_KEY={YOUR_TMDB_API_KEY}
+NEXT_PUBLIC_MOVIE_DB_API_TOKEN={YOUR_TMDB_READ_TOKEN}
 ```
 
-Get the API key from [themoviedb](https://www.themoviedb.org/settings/api)
+Get the API key from [TMDB](https://www.themoviedb.org/settings/api)
 
 ### Run the development server
 
